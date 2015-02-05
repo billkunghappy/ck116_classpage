@@ -1,0 +1,55 @@
+{% extends"base.html" %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block signup %}
+<form method="get">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Sign up</button>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <h4 id="login_signin">Sign up:</h4>
+<br>
+                                <input type="text" class="form-control" placeholder="Your Name" required data-validation-required-message="Please enter your name." name="name"
+                                id="sign_name" required>
+                                <br>
+
+                                <div class="alert alert-warning" role="alert" 
+                                id="name">{{name_error}}{{exist_error}}</div>
+                                <br>
+
+                                <input type="password" class="form-control" placeholder="Your Password" required data-validation-required-message="Please enter your password." name="password" id="sign_pw" required>
+                                <br>
+
+                                <div class="alert alert-warning" role="alert" 
+                                id="password">{{pw_error}}</div>
+                                <br>
+
+                                <input type="password" class="form-control" placeholder="Varify Password" required data-validation-required-message="Please varify your password." name="v_password" id="sign_v_pw" required>
+                                <br>
+
+                                <div class="alert alert-warning" role="alert" 
+                                id="v_password">{{v_error}}</div>
+                                <br>
+
+                                <input type="email" class="form-control" placeholder="Your Email" required data-validation-required-message="Please enter your email." name="email" id="sign_email" required>
+                                <br>
+                                <div class="alert alert-warning" role="alert"
+                                 id="email">{{email_error}}</div>
+                                
+<br>
+                                <button class="btn btn-primary" id="sign_button">
+                                Submit</button>
+                                <br>
+                                <div class="alert alert-warning" role="alert" 
+                                id="error">{{error_msg}}</div>
+                                <br>
+    </div>
+  </div>
+</div>
+</form>
+{% endblock %}
