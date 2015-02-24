@@ -29,16 +29,20 @@ class User_data(db.Model):
 		user = User_data.all().filter('name =', username).get()
 		return user
 
+	@classmethod
+	def login(cls,name,pw):
+		u=cls.by_name(name)
+		if u :
+			if u.password==pw:
+				return u.key()
+			else:
+				return "pw_error"
+		else:
+			return "name_error"
+
 class Signup(Sign_BaseHandler):
 	def get(self):
-		#need cookie set if i want to run
-		error_msg=""
-		check=self.check_already_login()
-		if check:
-			error_msg="Log out first if you want to sign up"
-
-		self.render("class_about_page.html",error_msg=error_msg,
-			)
+		self.redirect('/')
 	
 	def post(self):
 		name_error="The format of your name is wrong."
@@ -47,10 +51,10 @@ class Signup(Sign_BaseHandler):
 		email_error="This isn't a email."
 		exist_error=""
 
-		name=self.request.get("name")
-		pw=self.request.get("password")
-		vpw=self.request.get("v_password")
-		email=self.request.get("email")
+		name=str(self.request.get("name"))
+		pw=str(self.request.get("password"))
+		vpw=str(self.request.get("v_password"))
+		email=str(self.request.get("email"))
 
 		user_exist= User_data.by_name(name)
 		#self.request.get("home")
@@ -74,10 +78,10 @@ class Signup(Sign_BaseHandler):
 			user_key=user_data_put.key()
 			self.set_cookie("user_key",user_key)
 			
-			self.redirect('/signuptest')
+			self.redirect('/')
 
 		else:
-			self.render("class_about_page.html",
+			self.render("signup_login.html",
 			name_error=name_error,
 			pw_error=pw_error,
 			v_error=v_error,
@@ -85,9 +89,39 @@ class Signup(Sign_BaseHandler):
 			exist_error=exist_error
 			)
 
-# class Login(Sign_BaseHandler):
-# 	def get(self):
+class Login(Sign_BaseHandler):
+	def get(self):
+		self.redirect('/')
+# need to be change here
+	def post(self):
+		name=str(self.request.get("login_name"))
+		pw=str(self.request.get("login_pw"))
+
+		name_n_exist=""
+		pw_error=""
+
+		check_mark=User_data.login(name,pw)
+		if check_mark=="name_error":
+			name_n_exist="Your name doesn't exist"
+			self.render("signup_login.html",login_name_error=name_n_exist)
+		elif check_mark=="pw_error":
+			pw_error="Forget your password !?"
+			self.render("signup_login.html",login_pw_error=pw_error)
+		else:
+			self.set_cookie("user_key",check_mark)
+			self.redirect('/')
+
+class Logout(Sign_BaseHandler):
+	def get(self):
+		self.response.headers['Content-Type']='text/plain'
+		self.response.headers.add_header('Set-Cookie','user_key=;')
+		self.redirect('/')
+
+
+
+
 		
+
 
 
 

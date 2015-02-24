@@ -1,0 +1,406 @@
+{% extends"base.html" %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block signup %}
+
+<form style="display: hidden" action="/signupenter" method="post" id="signform">
+  <input type="hidden" id="var1" name="name" value=""/>
+  <input type="hidden" id="var2" name="password" value=""/>
+  <input type="hidden" id="var3" name="v_password" value=""/>
+  <input type="hidden" id="var4" name="email" value=""/>
+</form>
+
+<form style="display: hidden" action="/loginenter" method="post" id="loginform">
+  <input type="hidden" id="login_var1" name="login_name" value=""/>
+  <input type="hidden" id="login_var2" name="login_pw" value=""/>
+</form>
+
+
+<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                
+                <a class="navbar-brand page-scroll" href="#page-top">Ck116</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Services</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/blog">Blog</a>
+                    </li>
+                    <li>
+                        <button type="button"  data-toggle="modal" data-target="#make_work_modal" id="make_work_btn" class="style_btn">Make work</button>
+                    </li>
+                    <li>
+
+                        <div class="dropdown" id="dropdown">
+                            <button class="page-scroll" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                            {{dropdown}}
+                            <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                  <button type="button"  data-toggle="modal" data-target="#signup" id="signup_btn" role="menuitem"
+                                  class="style_btn">Sign up</button>
+                                </li>
+                                <li role="presentation">
+                                  <button type="button"  data-toggle="modal" data-target="#login" id="login_btn" role="menuitem" class="style_btn">Log in
+                                  </button>
+
+                                </li>
+                                <li role="presentation">
+                                  <a role="menuitem"  href="logout" id="logout_btn" style="display: true;">Log out
+                                  </a>
+                                </li>
+
+                                
+                                
+                            </ul>
+                        </div>
+                        
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro-section" >
+        <div class="container">
+            <div class="row">
+                <video autoplay  poster="/static/img_video/National_Geographic_Animals_028.jpg" id="bgvid" loop>
+                <source src="/static/img_video/m_ASUS_Display_Demo.mp4" >
+                </video>
+                hi there
+                <div class="col-lg-12">
+                    <h1>Scrolling Nav</h1>
+                    
+                    <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>About Section</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Services Section</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Contact Section</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="make_work_modal">
+  <div class="modal-dialog modal-sm" >
+    <div class="modal-content">
+      <div id="head_style_word">
+    
+      <h4 id="login_signin"><span id="head_style">Make work</span></h4>
+    
+    </div>
+    <br>
+    <form method="post">
+        <input type="text" class="form-control" placeholder="科目" required data-validation-required-message="請輸入科目" name="subject"
+        id="subject" required>
+        <br>
+        <input type="text" class="form-control" placeholder="名稱" required data-validation-required-message="請輸入名稱" name="work"
+        id="work" required>
+        <br>
+        <input type="date" class="form-control" name="date" min="2015-2-23" max="2016-12-31" required><br>
+        <br>
+        <input type="submit">
+    </form>
+                                
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="signup">
+  <div class="modal-dialog modal-sm" >
+    <div class="modal-content">
+    <div id="head_style_word">
+    
+      <h4 id="login_signin"><span id="head_style">Sign up</span></h4>
+    
+    </div>
+<br>
+                                <input type="text" class="form-control" placeholder="Your Name" required data-validation-required-message="Please enter your name." name="name"
+                                id="sign_name" required>
+                                <br>
+
+                                <div class="alert alert-warning" role="alert" 
+                                id="name">{{name_error}}{{exist_error}}</div>
+                                <br>
+
+                                <input type="password" class="form-control" placeholder="Your Password" required data-validation-required-message="Please enter your password." name="password" id="sign_pw" required>
+                                <br>
+
+                                <div class="alert alert-warning" role="alert" 
+                                id="password">{{pw_error}}</div>
+                                <br>
+
+                                <input type="password" class="form-control" placeholder="Varify Password" required data-validation-required-message="Please varify your password." name="v_password" id="sign_v_pw" required>
+                                <br>
+
+                                <div class="alert alert-warning" role="alert" 
+                                id="v_password">{{v_error}}</div>
+                                <br>
+
+                                <input type="email" class="form-control" placeholder="Your Email" required data-validation-required-message="Please enter your email." name="email" id="sign_email" required>
+                                <br>
+                                <div class="alert alert-warning" role="alert"
+                                 id="email">{{email_error}}</div>
+                                
+<br>
+                                <button class="btn btn-primary" id="sign_button">
+                                Submit</button>
+                                <br>
+                                <div class="alert alert-warning" role="alert" 
+                                id="error">{{error_msg}}</div>
+                                <br>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="login">
+  <div class="modal-dialog modal-sm" >
+    <div class="modal-content">
+      <div id="head_style_word">
+    
+      <h4 id="login_signin"><span id="head_style">Log in</span></h4>
+    
+    </div>
+<br>
+                                <input type="text" class="form-control" placeholder="Your Name" required data-validation-required-message="Please enter your name." name="login_name"
+                                id="login_name" required>
+                                <br>
+
+                                <div class="alert alert-warning" role="alert" 
+                                id="login_name_error">{{login_name_error}}</div>
+                                <br>
+                                <input type="password" class="form-control" placeholder="Your Password" required data-validation-required-message="Please enter your password." name="login_pw" id="login_pw" required>
+                                <br>
+
+                                <div class="alert alert-warning" role="alert" 
+                                id="login_pw_error">{{login_pw_error}}</div>
+                                <br>                                   
+                                <button class="btn btn-primary" id="login_button">
+                                Submit</button>
+                                <br>
+                                <br>
+                                <div class="alert alert-warning" role="alert" 
+                                id="login_error">{{login_error_msg}}</div>
+                                <br>
+    </div>
+  </div>
+</div>
+{% endblock %}

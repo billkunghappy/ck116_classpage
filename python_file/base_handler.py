@@ -39,15 +39,18 @@ class BaseHandler(webapp2.RequestHandler):
 #########################################################################################3
     def salt():
         return "".join(random.choice(string.letters)for x in xrange(5))
-    hash_salt=salt()
+    hash_salt="bill"
     def hash_str(self,value):
         return hashlib.md5(value).hexdigest()
     def make_secure_val(self,value):
         return "%s|%s" %(value,self.hash_str(str(value)+str(self.hash_salt)))
 
+    def check_secure_val(self,value):
+        val=value.split('|')[0]
+        if value==self.make_secure_val(val):
+            return val
     def set_cookie(self,cookie_name,cookie_val):
     	hash_val=self.make_secure_val(cookie_val)
-    	self.response.headers['Content-Type']='text/plain'
     	self.response.headers.add_header('Set-Cookie','%s=%s' % (cookie_name,hash_val))
 
 class Sign_BaseHandler(BaseHandler):
